@@ -1,5 +1,25 @@
-body{
+#codeBody{
     margin: 0;
+    font-family: "Roboto Slab", serif;
+    font-optical-sizing: auto;
+    font-weight: 373;
+    font-style: normal;
+}
+
+#startHeading{
+    text-align: center;
+    margin: 0.5rem auto;
+    font-size: 2rem;
+    color: #1f1fa0;
+}
+
+#disclaimerPara{
+    text-align: center;
+    margin: 0.25rem auto;
+}
+
+#disclaimerPara b{
+    color: #e50000;
 }
 
 #containerTestWeb{
@@ -13,13 +33,19 @@ body{
 #innerDiv1TestWeb, #innerDiv2TestWeb, #innerDiv3TestWeb{
     width: 33%;
     height: 23.5rem;
-    min-width: 300px;
+    min-width: 20rem;
     border: 1px solid white;
     background-color: #120f0f;
     color: white;
     border-radius: 0.5rem;
     margin-top: 0.25rem;
     /* overflow: auto; */
+}
+
+@media(max-width: 900px){
+    #innerDiv1TestWeb, #innerDiv2TestWeb, #innerDiv3TestWeb{
+        min-width: 350px;
+    }
 }
 
 #innerDiv1TestWeb #p1TestWeb, #innerDiv2TestWeb #p2TestWeb, #innerDiv3TestWeb #p3TestWeb{
@@ -41,6 +67,7 @@ body{
     color: white;
     border: none;
     border-radius: 0 0 0.5rem 0.5rem;
+    outline: none;
 }
 
 #saveChangeTestWeb{

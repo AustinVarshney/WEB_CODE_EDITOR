@@ -3,19 +3,44 @@ let saveButton = document.getElementById("confirmChangeTestWeb");
 let style = document.querySelector("style");
 let script = document.getElementById("scriptTagTestWeb");
 
-let el = document.createElement("p");
-el.innerHTML = "";
-el.style.margin = 0;
-el.style.display = "inline";
+// Function to attach event listeners based on the provided JavaScript code
+function attachEventListeners() {
+    // Retrieve the user-provided JavaScript code
+    let userScript = inp3TestWeb.value;
+
+    // Create a function from the user script
+    let userFunction = new Function(userScript);
+
+    // Execute the user script
+    userFunction();
+}
 
 
-saveButton.addEventListener("click", function(){
-    el.innerHTML = inp1TestWeb.value;
-    mainPart.append(el);
+// Save button click event listener
+saveButton.addEventListener("click", function() {
+    // Clear previous content
+    mainPart.innerHTML = '';
+    
+    // Create and append HTML content
+    let htmlContent = document.createElement("div");
+    htmlContent.innerHTML = inp1TestWeb.value;
+    mainPart.append(htmlContent);
 
-    style.innerText = "";
-    style.append(inp2TestWeb.value);
+    // Apply CSS content
+    style.innerText = inp2TestWeb.value;
 
-    script.innerText = "";
-    script.append(inp3TestWeb.value);
-})
+    // Apply JavaScript content and attach event listeners
+    // script.innerText = inp3TestWeb.value;
+    // attachEventListeners();
+});
+
+// Initialize MutationObserver to automatically attach event listeners to newly added elements
+const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+        if (mutation.addedNodes.length) {
+            attachEventListeners();
+        }
+    });
+});
+
+observer.observe(mainPart, { childList: true, subtree: true });
